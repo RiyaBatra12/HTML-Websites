@@ -1,0 +1,104 @@
+<html>
+<head>
+    <title>Registration Form</title>
+    <style>
+        body {
+            background-color: #00d1cd;
+            font-family: "Comic Sans MS", sans-serif;
+            color: #444444;
+        }
+        form {
+            margin: 20px auto;
+            padding: 20px;
+            border: 1px solid #ddd;
+            background-color: #fff;
+            max-width: 400px;
+            border-radius: 10px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        input, textarea {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        input[type="submit"], input[type="reset"] {
+            width: 48%;
+            cursor: pointer;
+        }
+    </style>
+    <script>
+        function validateForm() {
+            var firstname = document.getElementById("firstname").value;
+            if (!/^[a-zA-Z]{6,}$/.test(firstname)) {
+                alert("First Name should contain alphabets only and have at least 6 characters.");
+                return false;
+            }
+
+            var lastname = document.getElementById("lastname").value;
+            if (!/^[a-zA-Z]{6,}$/.test(lastname)) {
+                alert("Last Name should contain alphabets only and have at least 6 characters.");
+                return false;
+            }
+
+            var password = document.getElementById("pass").value;
+            if (password.length < 6) {
+                alert("Password should be at least 6 characters long.");
+                return false;
+            }
+	    var email = document.getElementById("email").value;
+            if (!/^\S+@\S+\.\S+$/.test(email)) {
+                alert("Please enter a valid email address.");
+                return false;
+            }
+
+            var mobile = document.getElementById("mobileno").value;
+            if (!/^\d{10}$/.test(mobile)) {
+                alert("Mobile number should be exactly 10 digits.");
+                return false;
+            }
+
+            return true;
+        }
+    </script>
+</head>
+<body>
+    <h1 style="text-align: center;">Registration Form</h1>
+    <form onsubmit="return validateForm()">
+        <label for="firstname">First Name (Minimum 6 characters)<span style="color: green;">*</span></label>
+        <input type="text" id="firstname">
+
+        <label for="lastname">Last Name (Minimum 6 characters)<span style="color: green;">*</span></label>
+        <input type="text" id="lastname">
+
+        <label for="email">Email Address<span style="color: green;">*</span></label>
+        <input type="text" id="email">
+        <small style="color: red;">(Valid E-mail id only: e.g., xyz@gmail.com)</small>
+
+        <label for="pass">Password (Minimum 6 characters)<span style="color: green;">*</span></label>
+        <input type="password" id="pass">
+
+        <label for="addr">Address<span style="color: green;">*</span></label>
+        <textarea rows="2" cols="20" id="addr"></textarea>
+
+        <label for="birthday">DOB<span style="color: green;">*</span></label>
+        <input type="date" id="birthday">
+
+        <label for="mobileno">Mobile No<span style="color: green;">*</span></label>
+        <input type="text" id="mobileno">
+
+        <label>Gender<span style="color: green;">*</span></label>
+        <input type="radio" name="gender" value="male"> Male
+        <input type="radio" name="gender" value="female"> Female
+
+        <div>
+            <input type="submit" value="Register">
+            <input type="reset" value="Reset">
+        </div>
+    </form>
+</body>
+</html>
